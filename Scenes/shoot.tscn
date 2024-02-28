@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddpnedobrhufs"]
+
+[ext_resource type="Script" path="res://Scenes/shoot.gd" id="1_6atbm"]
+[ext_resource type="Texture2D" uid="uid://b11iwc4kd22x4" path="res://Assets/Shoot.png" id="2_836qa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo4ej"]
+size = Vector2(4, 10.1111)
+
+[node name="Shoot" type="Area2D"]
+script = ExtResource("1_6atbm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.33333, 1.63636)
+texture = ExtResource("2_836qa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_yo4ej")

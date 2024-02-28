@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1unuwefnlkio"]
+
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_wr8gk"]
+[ext_resource type="Texture2D" uid="uid://cw5p8pcr6j20l" path="res://Assets/Laser_Cannon.png" id="2_y0kie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a8b3"]
+size = Vector2(432, 151.352)
+
+[node name="Player" type="Area2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_wr8gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13)
+scale = Vector2(0.37, 0.37)
+shape = SubResource("RectangleShape2D_1a8b3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("2_y0kie")

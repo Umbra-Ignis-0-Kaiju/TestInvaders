@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ds1qrlejd3yy5"]
+
+[ext_resource type="PackedScene" uid="uid://d14mp0klq1yvp" path="res://Scenes/wall.tscn" id="1_06nck"]
+[ext_resource type="PackedScene" uid="uid://b1unuwefnlkio" path="res://Scenes/player.tscn" id="2_owao3"]
+[ext_resource type="PackedScene" uid="uid://mgomvu2yo3u5" path="res://Scenes/invader_spawner.tscn" id="3_2myvf"]
+[ext_resource type="Script" path="res://Scenes/life_manager.gd" id="3_oschw"]
+[ext_resource type="Script" path="res://Scenes/points_counter.gd" id="5_7qm4m"]
+[ext_resource type="PackedScene" uid="uid://4oee7ynluo4a" path="res://ui.tscn" id="7_uvb34"]
+
+[node name="Main" type="Node2D"]
+
+[node name="InvaderSpawner" parent="." instance=ExtResource("3_2myvf")]
+position = Vector2(299, 119)
+
+[node name="Wall" parent="." instance=ExtResource("1_06nck")]
+position = Vector2(-11, 4)
+
+[node name="Wall2" parent="." instance=ExtResource("1_06nck")]
+position = Vector2(1163, 4)
+
+[node name="Player" parent="." instance=ExtResource("2_owao3")]
+position = Vector2(572, 621)
+
+[node name="Life" type="Node" parent="."]
+script = ExtResource("3_oschw")
+
+[node name="PointCount" type="Node" parent="."]
+script = ExtResource("5_7qm4m")
+
+[node name="UI" parent="." node_paths=PackedStringArray("invader_spawner", "life_manager") instance=ExtResource("7_uvb34")]
+invader_spawner = NodePath("../InvaderSpawner")
+life_manager = NodePath("../Life")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 323)
+
+[connection signal="area_entered" from="Wall" to="InvaderSpawner" method="_on_wall_area_entered"]
+[connection signal="area_entered" from="Wall" to="Player" method="_on_wall_area_entered"]
+[connection signal="area_entered" from="Wall2" to="InvaderSpawner" method="_on_wall_2_area_entered"]
+[connection signal="area_entered" from="Wall2" to="Player" method="_on_wall_2_area_entered"]

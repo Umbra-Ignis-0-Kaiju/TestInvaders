@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://4oee7ynluo4a"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_d8p1h"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_d8p1h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Points" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="GameOverContainer" type="CenterContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GameOverBox" type="VBoxContainer" parent="MarginContainer/GameOverContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/GameOverContainer/GameOverBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.788235, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/GameOverContainer/GameOverBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.698039, 0.203922, 0.67451, 1)
+theme_override_font_sizes/font_size = 25
+text = "RESTART"

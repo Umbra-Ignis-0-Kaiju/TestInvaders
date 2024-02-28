@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcbsjmo1j7w4u"]
+
+[ext_resource type="Script" path="res://Scenes/InvaderShoot.gd" id="1_itu64"]
+[ext_resource type="Texture2D" uid="uid://b11iwc4kd22x4" path="res://Assets/Shoot.png" id="2_gkxqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om357"]
+size = Vector2(3.33333, 10.6667)
+
+[node name="InvaderShoot" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_itu64")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.32549, 0.482353, 0.309804, 1)
+texture_filter = 1
+scale = Vector2(0.666667, 1)
+texture = ExtResource("2_gkxqe")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0.32549, 0.482353, 0.309804, 1)
+texture_filter = 1
+position = Vector2(0, -5)
+rotation = -1.5708
+scale = Vector2(0.625, 0.409091)
+texture = ExtResource("2_gkxqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_om357")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

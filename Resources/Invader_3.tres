@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvaderResource" load_steps=3 format=3 uid="uid://ur5v4ny83erc"]
+
+[ext_resource type="Script" path="res://Resources/Invader_conf.gd" id="1_irbxq"]
+[ext_resource type="Texture2D" uid="uid://cb608elk0q20c" path="res://Assets/Squid_L — копия.png" id="2_8gv86"]
+
+[resource]
+script = ExtResource("1_irbxq")
+sprite = ExtResource("2_8gv86")
+width = 11
+animation = "move_3"
+points = 10

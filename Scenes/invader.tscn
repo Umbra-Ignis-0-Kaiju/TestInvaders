@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://bf2bqqqu236cm"]
+
+[ext_resource type="Texture2D" uid="uid://c7uhl4oir8rb3" path="res://Assets/Squid_S — копия.png" id="1_hb43l"]
+[ext_resource type="Script" path="res://Scenes/Invader.gd" id="1_snext"]
+[ext_resource type="Texture2D" uid="uid://lu58o4tkbtgy" path="res://Assets/Squid_S.png" id="3_ehd3c"]
+[ext_resource type="Texture2D" uid="uid://dbblxr5o3w43" path="res://Assets/Squid_M — копия.png" id="4_naiv3"]
+[ext_resource type="Texture2D" uid="uid://didw7v2ylgjcs" path="res://Assets/Squid_M.png" id="5_w4frj"]
+[ext_resource type="Texture2D" uid="uid://cb608elk0q20c" path="res://Assets/Squid_L — копия.png" id="6_14ecn"]
+[ext_resource type="Texture2D" uid="uid://djl75xr14lr4k" path="res://Assets/Squid_L.png" id="7_nee5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nb03l"]
+radius = 20.025
+
+[sub_resource type="Animation" id="Animation_tqb4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hb43l")]
+}
+
+[sub_resource type="Animation" id="Animation_k5l07"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_hb43l"), ExtResource("3_ehd3c")]
+}
+
+[sub_resource type="Animation" id="Animation_d7bcj"]
+resource_name = "move_2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_naiv3"), ExtResource("5_w4frj")]
+}
+
+[sub_resource type="Animation" id="Animation_45jfi"]
+resource_name = "move_3"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_14ecn"), ExtResource("7_nee5k")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v30h5"]
+_data = {
+"RESET": SubResource("Animation_tqb4m"),
+"move_1": SubResource("Animation_k5l07"),
+"move_2": SubResource("Animation_d7bcj"),
+"move_3": SubResource("Animation_45jfi")
+}
+
+[node name="Inv" type="Area2D"]
+script = ExtResource("1_snext")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_hb43l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nb03l")
+debug_color = Color(0, 0.631373, 0.741176, 0.415686)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v30h5")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
